@@ -1,0 +1,12 @@
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\bin\Debug\net6.0\DisneyMovies.Core.deps.json
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\bin\Debug\net6.0\DisneyMovies.Core.dll
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\bin\Debug\net6.0\DisneyMovies.Core.pdb
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\DisneyMovies.Core.csproj.AssemblyReference.cache
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\DisneyMovies.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\DisneyMovies.Core.AssemblyInfoInputs.cache
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\DisneyMovies.Core.AssemblyInfo.cs
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\DisneyMovies.Core.csproj.CoreCompileInputs.cache
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\DisneyMovies.Core.dll
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\refint\DisneyMovies.Core.dll
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\DisneyMovies.Core.pdb
+D:\WorkSpace\C# Projects\DisneyMoviesWebApi\DisneyMovies.Core\obj\Debug\net6.0\ref\DisneyMovies.Core.dll

@@ -1,0 +1,4 @@
+﻿GET http://localhost:7266/characters
+Accept: application/json
+
+###

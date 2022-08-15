@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyMovies.Core", "DisneyMovies.Core\DisneyMovies.Core.csproj", "{C373D4FF-7630-45A3-B0B3-9F95B0289A78}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyMovies.Infrastructure", "DisneyMovies.Infrastructure\DisneyMovies.Infrastructure.csproj", "{57DE9B68-983A-49E0-96C2-9397C562EA81}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyMovies.Application", "DisneyMovies.Application\DisneyMovies.Application.csproj", "{511F9AB9-1050-4BD5-92A9-3EF595B82245}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyMovies.Api", "DisneyMovies.Api\DisneyMovies.Api.csproj", "{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C373D4FF-7630-45A3-B0B3-9F95B0289A78}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C373D4FF-7630-45A3-B0B3-9F95B0289A78}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C373D4FF-7630-45A3-B0B3-9F95B0289A78}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C373D4FF-7630-45A3-B0B3-9F95B0289A78}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57DE9B68-983A-49E0-96C2-9397C562EA81}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57DE9B68-983A-49E0-96C2-9397C562EA81}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57DE9B68-983A-49E0-96C2-9397C562EA81}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57DE9B68-983A-49E0-96C2-9397C562EA81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{511F9AB9-1050-4BD5-92A9-3EF595B82245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{511F9AB9-1050-4BD5-92A9-3EF595B82245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{511F9AB9-1050-4BD5-92A9-3EF595B82245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{511F9AB9-1050-4BD5-92A9-3EF595B82245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

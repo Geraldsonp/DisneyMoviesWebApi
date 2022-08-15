@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "NUuACC7zBMNlYkeE2cAGkinl5G93tf/g1dqg30vUhxo=",
+  "Source": "DisneyMovies.Api",
+  "BasePath": "_content/DisneyMovies.Api",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

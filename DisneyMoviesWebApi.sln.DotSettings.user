@@ -1,0 +1,6 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/ExcludedFiles/FilesAndFoldersToSkip2/=511F9AB9_002D1050_002D4BD5_002D92A9_002D3EF595B82245_002Fd_003AAuthentication_002Ff_003AAuthenticationService_002Ecs/@EntryIndexedValue">ForceIncluded</s:String>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
+  &lt;Assembly Path="C:\Users\Geraldson\.nuget\packages\microsoft.aspnetcore.identity\2.2.0\lib\netstandard2.0\Microsoft.AspNetCore.Identity.dll" /&gt;&#xD;
+  &lt;Assembly Path="C:\Users\Geraldson\.nuget\packages\microsoft.extensions.identity.core\2.2.0\lib\netstandard2.0\Microsoft.Extensions.Identity.Core.dll" /&gt;&#xD;
+&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
