@@ -3,10 +3,11 @@ using DisneyMovies.Api.Models.MediaModels;
 using DisneyMovies.Application.Services.MediaService;
 using DisneyMovies.Core.Entities;
 using MapsterMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DisneyMovies.Api.Controllers;
-
+[Authorize]
 [ApiController, Route("movies")]
 public class MediaController : Controller
 {
@@ -46,17 +47,17 @@ public class MediaController : Controller
 
     //Post
     [HttpPost]
-    public IActionResult CreateMedia(MediaCreateRequest createRequest)
+    public IActionResult CreateMedia(MediaCreateOrUpdateRequest createOrUpdateRequest)
     {
-        var mediaCreated = _mediaService.Create(_mapster.Map<Media>(createRequest));
+        var mediaCreated = _mediaService.Create(_mapster.Map<Media>(createOrUpdateRequest));
         return CreatedAtAction(nameof(GetMedia), routeValues: new { mediaCreated.Id }, mediaCreated);
     }
 
     //PUT
     [HttpPut("{id:int}")]
-    public IActionResult UpdateMedia(MediaCreateRequest updateRequest, int id)
+    public IActionResult UpdateMedia(MediaCreateOrUpdateRequest updateOrUpdateRequest, int id)
     {
-        var mediaToUpdate = _mapster.Map<Media>(updateRequest);
+        var mediaToUpdate = _mapster.Map<Media>(updateOrUpdateRequest);
         var mediaUpdated = _mediaService.Update(mediaToUpdate, id: id);
 
         return Ok(mediaUpdated);

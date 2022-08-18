@@ -283,6 +283,16 @@ namespace DisneyMovies.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 223,
+                            Email = "DefaultUser@hmail.com",
+                            Name = "Default User",
+                            Password = "Password123",
+                            UserName = "DName"
+                        });
                 });
 
             modelBuilder.Entity("DisneyMovies.Core.Entities.CharacterMedia", b =>

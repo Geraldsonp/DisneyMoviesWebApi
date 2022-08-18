@@ -9,6 +9,7 @@
     <ItemGroup>
         <PackageReference Include="DateOnlyTimeOnly.AspNet.Swashbuckle" Version="1.0.3" />
         <PackageReference Include="IsoDateTimeOffset" Version="0.0.2" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.8" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -24,6 +25,26 @@
 
     <ItemGroup>
       <Folder Include="Models\AuthenticationModels" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="HttpRequests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="HttpRequests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="HttpRequests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Remove="HttpRequests\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <_ContentIncludedByDefault Remove="HttpRequests\http-client.env.json" />
     </ItemGroup>
 
 </Project>

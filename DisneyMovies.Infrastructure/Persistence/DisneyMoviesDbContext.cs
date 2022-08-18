@@ -18,6 +18,7 @@ public class DisneyMoviesDbContext : DbContext
         modelBuilder.ApplyConfiguration<Media>(new MediaConfiguration());
         modelBuilder.ApplyConfiguration<Character>(new CharacterConfiguration());
         modelBuilder.ApplyConfiguration<CharacterMedia>(new CharacterMediaConfiguration());
+        modelBuilder.ApplyConfiguration<User>(new UserConfiguration());
     }
 
     public DbSet<User>? Users { get; set; }

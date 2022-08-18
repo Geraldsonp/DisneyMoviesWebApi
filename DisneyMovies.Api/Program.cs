@@ -1,16 +1,13 @@
-using System.Net.Sockets;
-using System.Text.Json.Serialization;
 using DisneyMovies.Api;
 using DisneyMovies.Application;
 using DisneyMovies.Infrastructure;
-using TinyHelpers.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddApiDependencies();
+builder.Services.AddApiDependencies(builder.Configuration);
 builder.Services.AddApplicationDependencies();
-builder.Services.AddInfrastructureDependencies(builder.Configuration.GetConnectionString("Default"));
+builder.Services.AddInfrastructureDependencies(builder.Configuration);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 
 var app = builder.Build();
@@ -23,7 +20,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
