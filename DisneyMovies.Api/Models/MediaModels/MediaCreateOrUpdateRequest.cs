@@ -17,5 +17,6 @@ public class MediaCreateOrUpdateRequest
     [Required(ErrorMessage = "Date Created is should not be empty")]
     public DateTime CreationDate { get; set; }
     [Range(minimum: 1, maximum: 5)] public int Rating { get; set; }
-    [Required] public IEnumerable<int>? GenresId { get; set; }
+    public IEnumerable<int>? GenresId { get; set; }
+    public IEnumerable<int>? CharactersId { get; set; }
 }

@@ -16,6 +16,6 @@ public class Character : BaseEntity
     [DataType(DataType.Text), MinLength(50)]
     public string? History { get; set; }
 
-    public virtual ICollection<CharacterMedia>? CharactersMedias { get; set; }
+    public virtual ICollection<Media>? Medias { get; set; }
 }
 

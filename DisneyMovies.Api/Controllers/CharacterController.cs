@@ -4,11 +4,13 @@ using DisneyMovies.Application.Services.CharacterService;
 using DisneyMovies.Application.Services.CharacterService.Common;
 using DisneyMovies.Core.Entities;
 using MapsterMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DisneyMovies.Api.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("characters")]
 public class CharacterController : Controller
 {

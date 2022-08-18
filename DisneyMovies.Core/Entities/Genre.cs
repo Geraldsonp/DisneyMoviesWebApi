@@ -6,6 +6,5 @@ public class Genre : BaseEntity
 {
     public string? Name { get; set; }
     public string? ImgUrl { get; set; }
-    [JsonIgnore]
-    public virtual ICollection<GenreMedia>? GenreMedias { get; set; }
+    public virtual ICollection<Media>? Medias { get; set; }
 }

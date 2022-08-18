@@ -37,7 +37,7 @@ public class Auth : Controller
 
         if (result.IsSuccess)
         {
-            return Ok($"Token: {result.Token}");
+            return Ok($"Bearer {result.Token}");
         }
         
         return BadRequest(result.Token);

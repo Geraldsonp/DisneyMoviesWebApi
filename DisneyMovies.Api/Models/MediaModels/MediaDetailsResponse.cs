@@ -14,7 +14,7 @@ public class MediaDetailsResponse
     public DateTime CreationDate { get; set; }
     public int Rating { get; set; }
     public MediaType Type { get; set; }
-    public virtual ICollection<Genre>? Genres { get; set; }
+    public  ICollection<Genre>? Genres { get; set; }
     public ICollection<CharacterDetailsResponse> Characters { get; set; }
     
 }

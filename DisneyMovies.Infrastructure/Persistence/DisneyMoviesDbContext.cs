@@ -13,12 +13,23 @@ public class DisneyMoviesDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration<GenreMedia>(new GenreMediaConfiguration());
-        modelBuilder.ApplyConfiguration<Genre>(new GenreConfiguration());
-        modelBuilder.ApplyConfiguration<Media>(new MediaConfiguration());
-        modelBuilder.ApplyConfiguration<Character>(new CharacterConfiguration());
-        modelBuilder.ApplyConfiguration<CharacterMedia>(new CharacterMediaConfiguration());
-        modelBuilder.ApplyConfiguration<User>(new UserConfiguration());
+        modelBuilder.ApplyConfiguration(new GenreConfiguration());
+        modelBuilder.ApplyConfiguration(new MediaConfiguration());
+        modelBuilder.ApplyConfiguration(new CharacterConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        
+        
+        modelBuilder.Entity("CharacterMedia").HasData(
+            new { CharactersId = 5, MediasId = 5 },
+            new { CharactersId = 1, MediasId = 5 },
+            new { CharactersId = 2, MediasId = 5 },
+            new { CharactersId = 3, MediasId = 5 }
+        );
+        modelBuilder.Entity("GenreMedia").HasData(
+            new { GenresId = 9, MediasId = 5 },
+            new { GenresId = 8, MediasId = 5 }
+        );
+        
     }
 
     public DbSet<User>? Users { get; set; }

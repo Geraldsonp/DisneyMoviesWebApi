@@ -1,6 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using System.Runtime.Serialization;
-using System.Text.Json.Serialization;
 using DisneyMovies.Core.Enums;
 
 namespace DisneyMovies.Core.Entities;
@@ -24,6 +22,6 @@ public class Media : BaseEntity
 
 
     [Required] public MediaType Type { get; set; }
-    public virtual ICollection<CharacterMedia>? CharacterMedias { get; set; }
-    public virtual ICollection<GenreMedia>? GenreMedias { get; set; }
+    public virtual ICollection<Character>? Characters { get; set; }
+    public virtual ICollection<Genre>? Genres { get; set; }
 }

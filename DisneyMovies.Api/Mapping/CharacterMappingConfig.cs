@@ -13,7 +13,7 @@ public class CharacterMappingConfig : IRegister
     {
         config.NewConfig<Character, CharacterDetailsResponse>()
             .Map(dest => dest.Medias, src =>
-                (src.CharactersMedias.Select(m => m.Media).Adapt<IEnumerable<MediaDetailsResponse>>()))
+                (src.Medias.Adapt<IEnumerable<MediaDetailsResponse>>()))
            ;
     }
 }

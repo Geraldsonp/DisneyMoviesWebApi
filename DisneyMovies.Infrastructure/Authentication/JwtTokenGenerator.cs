@@ -33,7 +33,7 @@ public class JwtTokenGenerator : IJwtTokenGenerator
             new Claim(JwtRegisteredClaimNames.Sid, id.ToString())
         };
         var securityToken = new JwtSecurityToken(
-            issuer: issuer,
+            //issuer: issuer,
             //audience: audience,
             expires: DateTime.UtcNow.AddDays(int.Parse(duration)),
             claims: claims,

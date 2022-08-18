@@ -19,7 +19,7 @@ public class CharacterService : ICharacterService
     public IEnumerable<Character> GetByParams(int age, int movieId, string name, double weight)
     {
         var characters = _unitOfWork.CharacterRepository.GetRangeByCondition(c => c.Name.Contains(name)
-            || c.Age == age || c.Weight == weight || c.CharactersMedias.Any(m => m.MediaId == movieId));
+            || c.Age == age || c.Weight == weight || c.Medias.Any(m => m.Id == movieId));
 
         return characters;
     }

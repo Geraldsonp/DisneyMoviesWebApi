@@ -24,10 +24,11 @@ public static class DependencyInjection
             options.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
             {
                 Description = "Jwt Security Token.",
-                Name = "JWT Bearer Auth",
+                Name = "Authorization",
                 In = ParameterLocation.Header,
                 Type = SecuritySchemeType.Http,
-                Scheme = "Bearer"
+                Scheme = "bearer",
+                BearerFormat = "JWT"
             });
         });
 
@@ -43,11 +44,11 @@ public static class DependencyInjection
             options.RequireHttpsMetadata = false;
             options.TokenValidationParameters = new TokenValidationParameters
             {
-                ValidateIssuer = true,
+                ValidateIssuer = false,
                 ValidateLifetime = true,
                 ValidateAudience = false,
                 ValidateIssuerSigningKey = true,
-                ValidIssuer = configuration["Jwt:Issuer"],
+                //ValidIssuer = configuration["Jwt:Issuer"],
                 //ValidAudience = configuration["jwt:validAudience"],
                 IssuerSigningKey = new SymmetricSecurityKey(key)
 
