@@ -8,6 +8,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyMovies.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DisneyMovies.Api", "DisneyMovies.Api\DisneyMovies.Api.csproj", "{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{DAB0AC88-6DE9-46A2-9D40-BE7172C86F90}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Test", "WebApi.Test\WebApi.Test.csproj", "{435B47BC-C206-4F79-BA62-7F8A086566BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +34,12 @@ Global
 		{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{819E5B21-E5D9-4E16-98BC-5FB9A2636E03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{435B47BC-C206-4F79-BA62-7F8A086566BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{435B47BC-C206-4F79-BA62-7F8A086566BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{435B47BC-C206-4F79-BA62-7F8A086566BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{435B47BC-C206-4F79-BA62-7F8A086566BA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{435B47BC-C206-4F79-BA62-7F8A086566BA} = {DAB0AC88-6DE9-46A2-9D40-BE7172C86F90}
 	EndGlobalSection
 EndGlobal

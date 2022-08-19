@@ -1,7 +1,6 @@
 ﻿using DisneyMovies.Api.Common;
 using DisneyMovies.Api.Models.CharacterModels;
 using DisneyMovies.Application.Services.CharacterService;
-using DisneyMovies.Application.Services.CharacterService.Common;
 using DisneyMovies.Core.Entities;
 using MapsterMapper;
 using Microsoft.AspNetCore.Authorization;

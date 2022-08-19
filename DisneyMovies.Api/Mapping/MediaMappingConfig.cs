@@ -1,4 +1,5 @@
 ﻿using DisneyMovies.Api.Models.CharacterModels;
+using DisneyMovies.Api.Models.GenreModels;
 using DisneyMovies.Api.Models.MediaModels;
 using DisneyMovies.Core.Entities;
 using Mapster;
@@ -17,9 +18,8 @@ public class MediaMappingConfig : IRegister
             .Ignore();
 
         config.NewConfig<Media, MediaCreateOrUpdateRequest>()
-            .Map(src => src.GenresId.Select(x => new Genre(){Id = x}), src => src.Genres)
-            .Map(src => src.CharactersId.Select(x => new Character(){Id = x}), src => src.Characters);
+            .Map(src => src.Genres, src => src.Genres.Adapt<GenreResponse>())
+            .Map(src => src.Characters, src => src.Characters.Adapt<CharacterResponse>());
         
-        //Todo: test This
     }
 }

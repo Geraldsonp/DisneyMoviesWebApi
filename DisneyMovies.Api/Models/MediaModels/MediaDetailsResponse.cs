@@ -15,6 +15,6 @@ public class MediaDetailsResponse
     public int Rating { get; set; }
     public MediaType Type { get; set; }
     public  ICollection<Genre>? Genres { get; set; }
-    public ICollection<CharacterDetailsResponse> Characters { get; set; }
+    public ICollection<CharacterDetailsResponse>? Characters { get; set; }
     
 }

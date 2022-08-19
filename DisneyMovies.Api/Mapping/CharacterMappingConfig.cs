@@ -1,6 +1,5 @@
 ﻿using DisneyMovies.Api.Models.CharacterModels;
 using DisneyMovies.Api.Models.MediaModels;
-using DisneyMovies.Application.Services.CharacterService.Common;
 using DisneyMovies.Core.Entities;
 using Mapster;
 using TinyHelpers.Extensions;

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace DisneyMovies.Application.Services.CharacterService.Common;
+namespace DisneyMovies.Api.Models.CharacterModels;
 
 public class CreateCharacterRequest
 {
@@ -15,4 +15,5 @@ public class CreateCharacterRequest
     [Required]
     [DataType(DataType.Text), MinLength(50)]
     public string? History { get; set; }
+    
 }

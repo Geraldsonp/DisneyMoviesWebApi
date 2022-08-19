@@ -23,9 +23,6 @@ public static class InfrastructureDependencies
             options.UseSqlite(configuration.GetConnectionString("Default"));
             options.UseLazyLoadingProxies();
         });
-        services.AddScoped<IAuthenticationService, AuthenticationService>();
-        services.AddScoped<ICharacterService, CharacterService>();
-        services.AddScoped<IMediaService, MediaService>();
         services.AddScoped<IUnitOfWork, UnitOfWork>();
         services.AddSingleton<IJwtTokenGenerator, JwtTokenGenerator>();
     }

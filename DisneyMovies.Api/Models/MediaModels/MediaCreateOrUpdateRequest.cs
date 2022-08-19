@@ -1,4 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using DisneyMovies.Api.Models.CharacterModels;
+using DisneyMovies.Api.Models.GenreModels;
 using DisneyMovies.Core.Entities;
 using DisneyMovies.Core.Enums;
 
@@ -17,6 +19,6 @@ public class MediaCreateOrUpdateRequest
     [Required(ErrorMessage = "Date Created is should not be empty")]
     public DateTime CreationDate { get; set; }
     [Range(minimum: 1, maximum: 5)] public int Rating { get; set; }
-    public IEnumerable<int>? GenresId { get; set; }
-    public IEnumerable<int>? CharactersId { get; set; }
+    public IEnumerable<GenreResponse>? Genres{ get; set; }
+    public IEnumerable<CreateCharacterRequest>? Characters { get; set; }
 }
