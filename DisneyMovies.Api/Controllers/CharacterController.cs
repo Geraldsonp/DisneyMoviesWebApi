@@ -1,4 +1,5 @@
 ﻿using DisneyMovies.Api.Common;
+using DisneyMovies.Api.Filters;
 using DisneyMovies.Api.Models.CharacterModels;
 using DisneyMovies.Application.Services.CharacterService;
 using DisneyMovies.Application.Services.MediaService;
@@ -21,13 +22,14 @@ public class CharacterController : ControllerBase
     public CharacterController(ICharacterService characterService, IMapper mapster, IMediaService mediaService)
     {
         _characterService = characterService;
-        
+
         _mapster = mapster;
         _mediaService = mediaService;
     }
 
     // GET
     [HttpGet]
+    [ProducesResponseType(200, Type = typeof(IEnumerable<CharacterResponse>))]
     public IActionResult GetAllCharacters([FromQuery] CharacterParams @params)
     {
         if (@params.Age != 0 || @params.Movies != 0 || @params.Name is not null || @params.Weight != 0)
@@ -43,15 +45,19 @@ public class CharacterController : ControllerBase
 
     //GetById
     [HttpGet("{id:int}")]
+    [ServiceFilter(typeof(MediaExistenceFilter))]
+    [ProducesResponseType(200, Type = typeof(CharacterDetailsResponse))]
+    [ProducesResponseType(404)]
     public IActionResult GetCharacter(int id)
     {
         var character = _characterService.Get(id);
-        
+
         return Ok(_mapster.Map<CharacterDetailsResponse>(character));
     }
 
     //Post
     [HttpPost]
+    [ProducesResponseType(201, Type = typeof(CharacterDetailsResponse))]
     public IActionResult CreateCharacter(CreateCharacterRequest characterRequest)
     {
         var character = _characterService.Create(_mapster.Map<Character>(characterRequest));
@@ -59,13 +65,15 @@ public class CharacterController : ControllerBase
     }
 
     [HttpPut("{id:int}/movies")]
+    [ServiceFilter(typeof(MediaExistenceFilter))]
+    [ProducesResponseType(200, Type = typeof(CharacterDetailsResponse))]
+    [ProducesResponseType(404)]
     public IActionResult AddMediaToCharacter(int id, AddMediaRequest addMediaRequest)
     {
-        var characterExist = _characterService.CharacterExist(id);
         var mediaExist = _mediaService.MediaExist(addMediaRequest.MediaId);
-        if (characterExist && mediaExist)
+        if (mediaExist)
         {
-            var updatedCharacter = _characterService.UpdateMedias( addMediaRequest.MediaId, id);
+            var updatedCharacter = _characterService.UpdateMedias(addMediaRequest.MediaId, id);
 
             return Ok(_mapster.Map<CharacterDetailsResponse>(updatedCharacter));
         }
@@ -73,19 +81,20 @@ public class CharacterController : ControllerBase
         {
             return NotFound("Character Or Movie Not Found");
         }
-        
     }
-    
+
 
     //Delete
     [HttpDelete("{id:int}/movies/{movieId:int}")]
+    [ServiceFilter(typeof(MediaExistenceFilter))]
+    [ProducesResponseType(200, Type = typeof(CharacterDetailsResponse))]
+    [ProducesResponseType(404)]
     public IActionResult DeleteMediaFromCharacter(int id, int movieId)
     {
-        var characterExist = _characterService.CharacterExist(id);
         var mediaExist = _mediaService.MediaExist(movieId);
-        if (characterExist && mediaExist)
+        if (mediaExist)
         {
-            var updatedCharacter = _characterService.UpdateMedias( movieId, id);
+            var updatedCharacter = _characterService.UpdateMedias(movieId, id);
 
             return Ok(_mapster.Map<CharacterDetailsResponse>(updatedCharacter));
         }
@@ -93,40 +102,28 @@ public class CharacterController : ControllerBase
         {
             return NotFound("Character Or Movie Not Found");
         }
-        
     }
+
     [HttpDelete("{id:int}")]
+    [ServiceFilter(typeof(MediaExistenceFilter))]
+    [ProducesResponseType(200, Type = typeof(CharacterDetailsResponse))]
+    [ProducesResponseType(404)]
     public IActionResult DeleteCharacter(int id)
     {
-        var characterExist = _characterService.CharacterExist(id);
-        if (characterExist)
-        {
-            _characterService.Delete(id);
-            return Ok();
-        }
-        else
-        {
-            return NotFound("Character Not found");
-        }
-       
+        _characterService.Delete(id);
+        return Ok();
     }
 
     //Update
     [HttpPut("{id:int}")]
+    [ServiceFilter(typeof(MediaExistenceFilter))]
+    [ProducesResponseType(200, Type = typeof(CharacterDetailsResponse))]
+    [ProducesResponseType(404)]
     public IActionResult UpdateCharacter(int id, CreateCharacterRequest character)
     {
-        var characterExist = _characterService.CharacterExist(id);
-        if (characterExist)
-        {
-            var characterModel = _mapster.Map<Character>(character);
-            var characterResponse = _characterService.Update(id, characterModel);
-        
-            return Ok(characterResponse);
-        }
-        else
-        {
-            return NotFound("Character Does not Exist");
-        }
-        
+        var characterModel = _mapster.Map<Character>(character);
+        var characterResponse = _characterService.Update(id, characterModel);
+
+        return Ok(characterResponse);
     }
 }
