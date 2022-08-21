@@ -1,4 +1,0 @@
-﻿GET http://localhost:44388/movies
-Accept: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJnaXZlbl9uYW1lIjoiRGVmYXVsdCBVc2VyIiwidW5pcXVlX25hbWUiOiJETmFtZSIsInNpZCI6IjIyMyIsImV4cCI6MTY2MDg3OTM3NiwiaXNzIjoiRGlzbmV5V2ViQXBpIn0.c1NJVkZ3CIWKMbgXHIFbJvfYkTCiZSeP6KV1f7YqWVo
-###
