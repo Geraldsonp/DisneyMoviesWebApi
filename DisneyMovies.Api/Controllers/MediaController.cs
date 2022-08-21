@@ -1,4 +1,5 @@
 ﻿using DisneyMovies.Api.Common;
+using DisneyMovies.Api.Filters;
 using DisneyMovies.Api.Models.MediaModels;
 using DisneyMovies.Application.Services.MediaService;
 using DisneyMovies.Core.Entities;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace DisneyMovies.Api.Controllers;
+
 [Authorize]
 [ApiController, Route("movies")]
 public class MediaController : Controller
@@ -38,10 +40,11 @@ public class MediaController : Controller
 
     // GET
     [HttpGet("{id:int}")]
+    [ServiceFilter(typeof(MediaExistenceFilter))]
     public IActionResult GetMedia(int id)
     {
         var media = _mediaService.Get(id);
-        
+
         return Ok(_mapster.Map<MediaDetailsResponse>(media));
     }
 
@@ -49,14 +52,27 @@ public class MediaController : Controller
     [HttpPost]
     public IActionResult CreateMedia(MediaCreateOrUpdateRequest createOrUpdateRequest)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState.ValidationState);
+        }
+
         var mediaCreated = _mediaService.Create(_mapster.Map<Media>(createOrUpdateRequest));
         return CreatedAtAction(nameof(GetMedia), routeValues: new { mediaCreated.Id }, mediaCreated);
     }
 
     //PUT
     [HttpPut("{id:int}")]
+    [ServiceFilter(typeof(MediaExistenceFilter))]
     public IActionResult UpdateMedia(MediaCreateOrUpdateRequest updateOrUpdateRequest, int id)
     {
+        if (!ModelState.IsValid)
+        {
+            return BadRequest(ModelState.Values);
+        }
+
+        var mediaExist = _mediaService.MediaExist(id);
+
         var mediaToUpdate = _mapster.Map<Media>(updateOrUpdateRequest);
         var mediaUpdated = _mediaService.Update(mediaToUpdate, id: id);
 
@@ -65,6 +81,7 @@ public class MediaController : Controller
 
     //Delete
     [HttpDelete("{id:int}")]
+    [ServiceFilter(typeof(MediaExistenceFilter))]
     public IActionResult DeleteMedia(int id)
     {
         _mediaService.Delete(id);

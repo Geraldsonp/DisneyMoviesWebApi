@@ -44,7 +44,6 @@ public class MediaService : IMediaService
 
     public Media Create(Media media)
     {
-       
         _unitOfWork.MediaRepository.Add(media);
         _unitOfWork.Save();
         return media;
@@ -71,5 +70,19 @@ public class MediaService : IMediaService
         var media = Get(id);
         _unitOfWork.MediaRepository.Delete(media);
         _unitOfWork.Save();
+    }
+
+    public bool MediaExist(int movieId)
+    {
+        var media = _unitOfWork.MediaRepository.GetByCondition(m => m.Id == movieId);
+
+        if (media is null)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
     }
 }

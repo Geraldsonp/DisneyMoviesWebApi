@@ -1,6 +1,7 @@
 ﻿using DisneyMovies.Api.Common;
 using DisneyMovies.Api.Models.CharacterModels;
 using DisneyMovies.Application.Services.CharacterService;
+using DisneyMovies.Application.Services.MediaService;
 using DisneyMovies.Core.Entities;
 using MapsterMapper;
 using Microsoft.AspNetCore.Authorization;
@@ -11,15 +12,18 @@ namespace DisneyMovies.Api.Controllers;
 [ApiController]
 [Authorize]
 [Route("characters")]
-public class CharacterController : Controller
+public class CharacterController : ControllerBase
 {
     private readonly ICharacterService _characterService;
     private readonly IMapper _mapster;
+    private readonly IMediaService _mediaService;
 
-    public CharacterController(ICharacterService characterService, IMapper mapster)
+    public CharacterController(ICharacterService characterService, IMapper mapster, IMediaService mediaService)
     {
         _characterService = characterService;
+        
         _mapster = mapster;
+        _mediaService = mediaService;
     }
 
     // GET
@@ -54,19 +58,75 @@ public class CharacterController : Controller
         return CreatedAtAction(nameof(GetCharacter), new { character.Id }, character);
     }
 
+    [HttpPut("{id:int}/movies")]
+    public IActionResult AddMediaToCharacter(int id, AddMediaRequest addMediaRequest)
+    {
+        var characterExist = _characterService.CharacterExist(id);
+        var mediaExist = _mediaService.MediaExist(addMediaRequest.MediaId);
+        if (characterExist && mediaExist)
+        {
+            var updatedCharacter = _characterService.UpdateMedias( addMediaRequest.MediaId, id);
+
+            return Ok(_mapster.Map<CharacterDetailsResponse>(updatedCharacter));
+        }
+        else
+        {
+            return NotFound("Character Or Movie Not Found");
+        }
+        
+    }
+    
+
     //Delete
+    [HttpDelete("{id:int}/movies/{movieId:int}")]
+    public IActionResult DeleteMediaFromCharacter(int id, int movieId)
+    {
+        var characterExist = _characterService.CharacterExist(id);
+        var mediaExist = _mediaService.MediaExist(movieId);
+        if (characterExist && mediaExist)
+        {
+            var updatedCharacter = _characterService.UpdateMedias( movieId, id);
+
+            return Ok(_mapster.Map<CharacterDetailsResponse>(updatedCharacter));
+        }
+        else
+        {
+            return NotFound("Character Or Movie Not Found");
+        }
+        
+    }
     [HttpDelete("{id:int}")]
     public IActionResult DeleteCharacter(int id)
     {
-        _characterService.Delete(id);
-        return Ok();
+        var characterExist = _characterService.CharacterExist(id);
+        if (characterExist)
+        {
+            _characterService.Delete(id);
+            return Ok();
+        }
+        else
+        {
+            return NotFound("Character Not found");
+        }
+       
     }
 
     //Update
     [HttpPut("{id:int}")]
-    public IActionResult UpdateCharacter(int id, Character character)
+    public IActionResult UpdateCharacter(int id, CreateCharacterRequest character)
     {
-        var characterResponse = _characterService.Update(id, character);
-        return Ok(characterResponse);
+        var characterExist = _characterService.CharacterExist(id);
+        if (characterExist)
+        {
+            var characterModel = _mapster.Map<Character>(character);
+            var characterResponse = _characterService.Update(id, characterModel);
+        
+            return Ok(characterResponse);
+        }
+        else
+        {
+            return NotFound("Character Does not Exist");
+        }
+        
     }
 }

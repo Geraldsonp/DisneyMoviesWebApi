@@ -10,4 +10,5 @@ public interface IMediaService
     Media Create(Media createRequest);
     Media Update(Media updatedMedia, int id);
     void Delete(int id);
+    bool MediaExist(int movieId);
 }

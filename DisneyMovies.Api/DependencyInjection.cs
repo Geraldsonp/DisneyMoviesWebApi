@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Text.Json.Serialization;
+using DisneyMovies.Api.Filters;
 using DisneyMovies.Application.Common.Mapping;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -12,6 +13,7 @@ public static class DependencyInjection
     public static void AddApiDependencies(this IServiceCollection services, IConfiguration configuration)
     {
         services.AddMappings();
+        services.AddScoped<MediaExistenceFilter>();
         services.AddControllers().AddJsonOptions(options =>
         {
             options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
